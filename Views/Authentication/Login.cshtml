@@ -1,0 +1,70 @@
+﻿@model Blog.Models.DTO.LoginModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Assuming you have a shared layout file
+    ViewData["Title"] = "Login";
+}
+
+
+@* @section Content { *@
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1>@ViewData["Title"]</h1>
+
+            @if (ViewData["Message"] != null)
+            {
+                <div class="alert alert-info">@ViewData["Message"]</div>
+            }
+
+            <form asp-action="Login" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <p></p>
+                @* <button type="submit" class="btn btn-primary">Login</button> *@
+
+                <div>
+                    @*<a type="button" class="btn btn-primary" value="submit" href="/Home/Index" >Login</a>*@
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <br />
+                    <a href="/Authentication/Register">Not a user! click here to sign up</a>
+                </div>
+            @if (TempData["msg"] != null)
+            {
+                @* <br/>
+                <br/>
+                <label>@TempData["msg"]</label>  *@
+
+                <!-- Trigger Toastr notification here -->
+                <script>
+                    toastr.success('@TempData["msg"]');
+                </script>
+            }
+            else if (TempData["error"] != null)
+            {
+            <script>
+                toastr.error('@TempData["error"]');
+            </script>
+            }  
+
+            </form>
+        </div>
+    </div>
+@* } *@
+
+@* @section Scripts {
+    <script>
+        // Trigger Toastr notification here based on the data-message attribute
+        var message = $("#toastr-script").data("message");
+        if (message) {
+            toastr.success(message);
+        }
+        else {
+            toastr.error("An unexpected error occurred."); // Default error message if needed
+        }
+    </script>
+} *@

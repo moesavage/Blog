@@ -1,0 +1,65 @@
+﻿@{
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Admin Dashboard";
+}
+     
+@section Contentt {
+    <div class="row">
+        <div class="col-md-2">
+            <!-- Sidebar -->
+                
+                @* <div class="list-group">
+
+                        <a href="#" class=" list-group-item list-group-item-action dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            User Management
+                        </a>
+                    <div class="dropdown-menu">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <a href="/" onclick="loadUserManagement()">Internal Users</a>
+                                </li>
+                                <li class="list-group-item">
+                                <a href="/" onclick="loadUserManagement()">External Users</a>
+                                </li>
+                            </ul>
+                    </div>
+                    <a href="#" class="list-group-item list-group-item-action">Role Management</a>
+                </div> *@
+                
+        </div>
+        <div class="col-md-10">
+            <h1>@ViewData["Title"]</h1>
+
+            <!-- Add your dashboard content here -->
+
+            <div class="card">
+                <div class="card-header">
+                    Dashboard Statistics
+                </div>
+                <div class="card-body">
+                    <p>Here is the Dashboard activities.</p>
+                </div>
+                <div class="card-body" id="userManagementContent">
+                    <!-- Content will be loaded here --> zzzz
+                </div>
+            </div>
+        </div>
+    </div>
+    @* <script>
+        function loadUserManagement() {
+            // Use AJAX to fetch user management data
+            $.ajax({
+                url: '/Authentication/Login // Replace with the actual URL to fetch user management data
+                        type: 'GET',
+                success: function (data) {
+                    // Replace the content of the userManagementContent div with the fetched data
+                    $('#userManagementContent').html(data);
+                },
+                error: function () {
+                    // Handle errors if needed
+                    console.log('Error fetching user management data');
+                }
+            });
+        }
+    </script> *@
+}

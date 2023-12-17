@@ -1,0 +1,72 @@
+﻿@* @page *@
+@* @using Blog.Models.Domain; *@
+@using Microsoft.AspNetCore.Identity;
+@* @model Blog.Areas.Identity.Pages.Account.RegisterModel *@
+@model Blog.Models.DTO.CreateUsersViewModel;
+
+@{
+
+    ViewData["Title"] = "Create User";
+}
+
+@section Contentt {
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1>@ViewData["Title"]</h1>
+
+            @if (ViewData["Message"] != null)
+            {
+                <div class="alert alert-info">@ViewData["Message"]</div>
+            }
+
+            <form asp-action="SaveUsers" method="post">
+                <div class="form-group">
+                    <label for="FirstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="Roles">Roles</label>
+
+                    @if (Model?.Roles != null && Model.Roles.Any())
+                    {
+                        <select asp-for="Role" class="form-select" asp-items="new SelectList(Model.Roles, nameof(IdentityRole.Name), nameof(IdentityRole.Name))">
+                            <option disabled selected>Select Role</option>
+                        </select>
+                        <span asp-validation-for="Role" class="text-danger"></span>
+                    }
+                    else
+                    {
+                        <p>No roles available.</p>
+                    }
+                </div>
+
+                @if (TempData["msg"] != null)
+                {
+                    <div class="msg">
+                        <span class="err"@TempData["msg"]></span>
+                    </div>
+                }
+                <br />
+               <p></p>
+               <div>
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a  class="btn btn-info" href="/UserManagement/Index">Back</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+}

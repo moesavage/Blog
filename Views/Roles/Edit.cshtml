@@ -1,0 +1,30 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+
+@{
+    ViewData["Title"] = "Edit Role";
+}
+
+<h1>Edit Role</h1>
+
+<div>
+    <form asp-action="Edit">
+        <div class="form-group">
+            <input type="hidden" asp-for="Id" />
+
+            <label asp-for="Name">Role Name</label>
+            <input asp-for="Name" class="form-control"/>
+        </div>
+
+        @* <div class="form-group">
+            <label asp-for="NormalizedName">Normalized Name</label>
+            <input asp-for="NormalizedName" class="form-control" readonly /> 
+        </div> *@
+
+        <!-- Add more fields for editing role properties as needed -->
+        <br/>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </form>
+</div>

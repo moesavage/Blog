@@ -1,0 +1,44 @@
+@using Microsoft.AspNetCore.Identity
+@using Blog.Models.Domain
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@* @inject RoleManager<ApplicationUser> RoleManager *@
+
+@if (SignInManager.IsSignedIn(User))
+{
+    var isAdmin = User.IsInRole("Admin");
+    var isUser = User.IsInRole("User");
+    <div class="d-flex align-items-center">
+
+        
+        @if (isAdmin)
+        {
+
+        }
+        <form class="d-flex" asp-controller="" asp-action="" style="padding-right: 25px;">
+            <input name="searchString" type="text" class="form-control me-2" placeholder="Search for a post..." aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+
+        <div class="flex-grow-1 text-center">
+
+                <a asp-area="" asp-controller="" asp-action="" class="nav-link" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                </div>
+                @* <a asp-area="" asp-controller="Roles" asp-action="Index" class="nav-link" title="Manage">Roles</a> *@
+            @* </li> *@
+                <form asp-area="" asp-controller="Authentication" asp-action="Logout" method="post">
+            @* <li class="nav-item"> *@
+                <button type="submit" class="btn btn-link navbar-btn nav-link">Log Out</button>
+            @* </li> *@
+                </form>
+             </div>
+        @* </ul> *@
+}
+else
+{
+    <ul class="navbar-nav navbar-collapse justify-content-end">
+        <li class="nav-item"> <a href="/Authentication/Register" class="nav-link">Register</a></li>
+        <li class="nav-item"> <a href="/Authentication/Login" class="nav-link">Log In</a></li>
+    </ul>
+}

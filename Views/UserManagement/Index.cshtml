@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Collections
+@model IEnumerable<UserWithRolesViewModel>
+@{
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "User Management";
+}
+     
+    <div class="row">
+        <div class="col-md-1.5">
+            <a href="/UserManagement/CreateUsers" class="btn btn-success" tabindex="1" role="button" aria-disabled="false">Create User</a>
+            
+        </div>
+        <p></p>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                @* <th>@Html.DisplayNameFor(model => model.Id)</th> *@
+                <th>@Html.DisplayNameFor(model => model.UserName)</th>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <th>Roles</th>
+                @* <th>Edit</th> *@
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @* <td>@Html.DisplayFor(modelitem=>item.Id)</td> *@
+                    <td>@Html.DisplayFor(modelItem=>item.UserName)</td>
+                    <td>@Html.DisplayFor(modelItem=>item.Email)</td>
+                    <td>
+                        @foreach (var roleName in item.RolesNames)
+                        {
+                            <span > @roleName</span>
+                        }
+                    </td>
+                    <td>
+                        <a href="@Url.Action("GetUsers", "UserManagement", new { userName = item.UserName })" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td></td>
+                </tr>
+            }
+            </tbody>
+
+        </table>
+    </div>

@@ -1,0 +1,47 @@
+﻿@{
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "User Management";
+}
+     
+@section Contentt {
+    <div class="row">
+        <div class="col-md-1.5">
+            <a href="/AdminDashboard/CreateUsers" class="btn btn-success" tabindex="1" role="button" aria-disabled="false">Create User</a>
+            
+        </div>
+        <div class="col-md-10">
+            <h1>@ViewData["Title"]</h1>
+
+            <!-- Add your dashboard content here -->
+
+            <div class="card">
+                <div class="card-header">
+                    User Table
+                </div>
+                <div class="card-body">
+                    <p>Here is the User Details.</p>
+                </div>
+                <div class="card-body" id="userManagementContent">
+                    <!-- Content will be loaded here --> zzzz
+                </div>
+            </div>
+        </div>
+    </div>
+    @* <script>
+        function loadUserManagement() {
+            // Use AJAX to fetch user management data
+            $.ajax({
+                url: '/Authentication/Login // Replace with the actual URL to fetch user management data
+                        type: 'GET',
+                success: function (data) {
+                    // Replace the content of the userManagementContent div with the fetched data
+                    $('#userManagementContent').html(data);
+                },
+                error: function () {
+                    // Handle errors if needed
+                    console.log('Error fetching user management data');
+                }
+            });
+        }
+    </script> *@
+}

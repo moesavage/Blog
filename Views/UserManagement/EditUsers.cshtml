@@ -1,0 +1,89 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model Blog.Models.DTO.CreateUsersViewModel
+
+@{
+
+    ViewData["Title"] = "Edit User";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>@ViewData["Title"]</h1>
+
+        @if (ViewData["Message"] != null)
+        {
+            <div class="alert alert-info">@ViewData["Message"]</div>
+        }
+        @* @if (Model != null)
+        { *@
+
+        <form asp-action="UpdateUsers" method="post">
+            <input type="hidden" asp-for="UserId" />
+
+            <div class="form-group">
+                <label for="FirstName">First Name</label>
+                <input type="text" class="form-control" asp-for="FirstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" asp-for="LastName" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" asp-for="UserName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" asp-for="Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Role">Roles</label>
+
+                @* @if (Model?.Roles != null && Model.Roles.Any())
+                { *@
+                <select asp-for="SelectedRole" class="form-select" asp-items="new SelectList(Model.Roles, nameof(IdentityRole.Name), nameof(IdentityRole.Name))">
+                        <option disabled>Select Role</option>
+                    </select>
+                <span asp-validation-for="SelectedRole" class="text-danger"></span>
+               @*  }
+                else
+                {
+                    <p>No roles available.</p>
+                } *@
+            </div>
+
+            @* Add other form fields as needed *@
+
+           @*  @if (TempData["msg"] != null)
+            {
+                <div class="msg">
+                    <span class="err">@TempData["msg"]</span>
+                </div>
+            } *@
+            <br />
+            <p></p>
+            <div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a class="btn btn-info" href="/UserManagement/Index">Back</a>
+            </div>
+        </form>
+        @* }
+        else
+        {
+            <p>user now found.</p>
+        } *@
+    </div>
+</div>
+
+@* @section Scripts {
+    <script>
+        // Populate the form fields with the existing user details
+        var user = @Html.Raw(Json.Serialize(Model));
+        document.getElementById('FirstName').value = user.FirstName;
+        document.getElementById('LastName').value = user.LastName;
+        document.getElementById('UserName').value = user.UserName;
+        document.getElementById('Email').value = user.Email;
+        document.getElementById('Role').value = user.Role; // Assuming 'Input_Role' is the generated id for the roles dropdown
+    </script>
+} *@
