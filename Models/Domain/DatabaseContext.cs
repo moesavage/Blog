@@ -32,6 +32,9 @@ namespace Blog.Models.Domain
                 .HasForeignKey(e => e.UserId)
                 .IsRequired();
         }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
 
     }
 }

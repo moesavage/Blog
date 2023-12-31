@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Blog.Models.Category>
+
+<h2>Categories</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Display Order</th>
+            <th>Created At</th>
+            <!-- Add other columns as needed -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>@category.CategoryId</td>
+                <td>@category.Name</td>
+                <td>@category.Description</td>
+                <td>@category.DisplayOrder</td>
+                <td>@category.CreatedAt.ToString("yyyy-MM-dd")</td>
+                <!-- Add other columns as needed -->
+            </tr>
+        }
+    </tbody>
+</table>

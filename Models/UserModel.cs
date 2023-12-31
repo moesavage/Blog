@@ -16,4 +16,11 @@
         public string Email { get; set; }
         public List<string> RolesNames { get; set; }
     }
+
+    public class User
+    {
+        public int UserId { get; set; }
+        public string UserName { get; set; }
+        // Other user properties
+    }
 }

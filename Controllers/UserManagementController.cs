@@ -58,31 +58,6 @@ namespace Blog.Controllers
 
             return View(usersWithRoles);
         }
-        //{
-        //    var usersWithRoles = userManager.Users.Select(async u => new UserWithRolesViewModel
-        //    {
-        //        UserId = u.Id,
-        //        UserName = u.UserName,
-        //        Email = u.Email,
-        //        RolesNames = (await userManager.GetRolesAsync(u))
-        //            .Select(roleId => _manager.Roles.FirstOrDefault(r => r.Id == roleId)?.Name)
-        //            .ToList() ?? new List<string>() //Roles = u.Roles.Select(ur =>ur.RoleId).ToList()
-        //    });
-
-        //    var usersWithRolesList = await Task.WhenAll(usersWithRoles);
-
-        //    return View(usersWithRolesList);
-        //}
-
-        //var usersWithRoleNames = usersWithRoles.Select(u => new
-        //{
-        //    UserId = u.UserId,
-        //    UserName = u.UserName,
-        //    Email = u.Email,
-        //    RolesNames = u.Roles.Select(roleId => _manager.Roles.FirstOrDefault(r => r.Id == roleId)?.Name)
-        //}).ToList();
-        //var users = userManager.Users.ToList();
-        //var userRoles = dbUserRoles.Where(ur => ur.UserId == userId).ToList();
 
         public IActionResult CreateUsers()
         {
@@ -101,41 +76,6 @@ namespace Blog.Controllers
             TempData["msg"] = result.Message;
             return RedirectToAction(nameof(CreateUsers));
         }
-
-        //public IActionResult EditUsers(string id)
-        //{
-        //    // Check if id is null or empty
-        //    if (string.IsNullOrEmpty(id))
-        //    {
-        //        // Handle invalid id, for example, redirect to an error page
-        //        return RedirectToAction("Error");
-        //    }
-
-        //    // Fetch user data based on id (assuming you have a service or repository for this)
-        //    var user = _userManager.FindByIdAsync(id).Result;
-
-        //    // Check if user is not found
-        //    if (user == null)
-        //    {
-        //        // Handle user not found, for example, redirect to an error page
-        //        return RedirectToAction("Error");
-        //    }
-
-        //    // Map user data to your view model (adjust as needed)
-        //    var viewModel = new CreateUsersViewModel
-        //    {
-        //        UserId = user.Id,
-        //        FirstName = user.FirstName, // Replace with actual property names
-        //        LastName = user.LastName,
-        //        Username = user.UserName,
-        //        Email = user.Email,
-        //        // Map other properties as needed
-        //    };
-
-        //    // Pass the view model to the view
-        //    return View(viewModel);
-        //}
-
 
         [HttpGet]
         public async Task<IActionResult> GetUsers(string userName)
